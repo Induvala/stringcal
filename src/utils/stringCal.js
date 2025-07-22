@@ -18,4 +18,6 @@ export function AddValue(numbers){
         throw new Error(`Negative number not allowed: ${negatives.join('.')}`)
     }
 
+    return numberArray.reduce((sum,num)=> sum + num,0);
+
 }
