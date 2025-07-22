@@ -4,9 +4,9 @@ import StringCal from './components/StringCal';
 
 function App() {
   return (
-   <div className='App'>
-    <StringCal/>
-   </div>
+    <div className='App'>
+      <StringCal />
+    </div>
   );
 }
 
