@@ -11,6 +11,11 @@ export function AddValue(numbers){
             numberStr = match[2];
         }
     }
-
     
+    const numberArray = numberStr.split(delimiter).map(n => parseInt(n,10)).filter(n => !isNaN(n));
+    const negatives = numberArray.filter(n => n<0);
+    if(negatives.length > 0){
+        throw new Error(`Negative number not allowed: ${negatives.join('.')}`)
+    }
+
 }
