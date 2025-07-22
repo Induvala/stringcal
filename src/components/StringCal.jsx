@@ -1,13 +1,22 @@
 import React from 'react'
 import { useState } from 'react';
+import { AddValue } from '../utils/stringCal';
 
 function StringCal() {
-    const [input, SetInput] = useState('');
-    const [result, SetResult] = useState(null);
-    const [error, SetError] = useState('');
+    const [input, setInput] = useState('');
+    const [result, setResult] = useState(null);
+    const [error, setError] = useState('');
     
-    function handleClick(){
-        console.log("test")
+    const handleClick = () => {
+        try{
+            let sum = AddValue(input);
+            setResult(sum);
+            setError('');
+
+        }catch(error){
+         setResult(null);
+         setError(error.message);
+        }
     }
 
   return (
@@ -18,9 +27,11 @@ function StringCal() {
          cols={40}
          placeholder="Enter numbers (e.g., 1,2 or //;\n1;2)"
          value={input}
-         onChange={(e)=>SetInput(e.target.value)}
+         onChange={(e)=>setInput(e.target.value)}
         />
-        <button type='button' onClick={handleClick}>Calculate</button>
+        <br/>
+        <br/>
+        <button style={{color:'#fff',border:0, borderRadius:'15px',backgroundColor:'#0275d8',padding:'10px'}} type='button' onClick={handleClick}>Calculate</button>
         {result !==null && <p>Result: {result} </p>}
         {error && <p style={{color:'red'}}>{error}</p>}
     </div>
