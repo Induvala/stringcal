@@ -3,6 +3,13 @@ import { useState } from 'react';
 
 function StringCal() {
     const [input, SetInput] = useState('');
+    const [result, SetResult] = useState(null);
+    const [error, SetError] = useState('');
+    
+    function handleClick(){
+        console.log("test")
+    }
+
   return (
     <div className='main' style={{padding:20}}>
         <h2>String Calculator</h2>
@@ -13,7 +20,9 @@ function StringCal() {
          value={input}
          onChange={(e)=>SetInput(e.target.value)}
         />
-        <button type='button'>Calculate</button>
+        <button type='button' onClick={handleClick}>Calculate</button>
+        {result !==null && <p>Result: {result} </p>}
+        {error && <p style={{color:'red'}}>{error}</p>}
     </div>
   )
 }
